@@ -147,13 +147,16 @@ function swipedetect(el, callback) {
 swipedetect(grid, function (swipedir) {
   // swipedir contains either "none", "left", "right", "top", or "down"
   if (swipedir == "left") {
-    alert("left");
+    alert(swipedir);
   } else if ((swipedir = "right")) {
-    alert("right");
+    alert(swipedir);
+    // alert("right");
   } else if ((swipedir = "up")) {
-    alert("up");
+    alert(swipedir);
+    // alert("up");
   } else if ((swipedir = "down")) {
-    alert("down");
+    alert(swipedir);
+    // alert("down");
   }
 });
 

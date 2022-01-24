@@ -1,6 +1,7 @@
 const squares = document.querySelectorAll(".grid div");
 const scoreDisplay = document.querySelector(".score span");
 const startBtn = document.querySelector(".start");
+const grid = document.querySelector('.grid')
 
 const width = 10;
 let currentIndex = 0;
@@ -80,21 +81,60 @@ function control(e) {
   else if (e.keyCode === 82) startGame()
 }
 
-function swipeDetect (el, callback) {
-  const touchsurface = el,
+function swipedetect(el, callback){
+  
+  var touchsurface = el,
   swipedir,
   startX,
   startY,
   distX,
   distY,
-  threshold = 50, //min distance traveled to be considered swipe
-  restraint = 100, //max distance allowed at the same time in perpendicular direction
-  allowedTime = 300, //max time allowed to travel that distance
+  threshold = 150, //required min distance traveled to be considered swipe
+  restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+  allowedTime = 300, // maximum time allowed to travel that distance
   elapsedTime,
   startTime,
-  handleSwipe = callback || function(swipedir) {}
+  handleswipe = callback || function(swipedir){}
 
+  touchsurface.addEventListener('touchstart', function(e){
+      let touchobj = e.changedTouches[0]
+      swipedir = 'none'
+      dist = 0
+      startX = touchobj.pageX
+      startY = touchobj.pageY
+      startTime = new Date().getTime() // record time when finger first makes contact with surface
+      e.preventDefault()
+  }, false)
+
+  touchsurface.addEventListener('touchmove', function(e){
+      e.preventDefault() // prevent scrolling when inside DIV
+  }, false)
+
+  touchsurface.addEventListener('touchend', function(e){
+      let touchobj = e.changedTouches[0]
+      distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
+      distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
+      elapsedTime = new Date().getTime() - startTime // get time elapsed
+      if (elapsedTime <= allowedTime){ // first condition for awipe met
+          if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
+              swipedir = (distX < 0)? 'left' : 'right' // if dist traveled is negative, it indicates left swipe
+          }
+          else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){ // 2nd condition for vertical swipe met
+              swipedir = (distY < 0)? 'up' : 'down' // if dist traveled is negative, it indicates up swipe
+          }
+      }
+      handleswipe(swipedir)
+      e.preventDefault()
+  }, false)
 }
+
+swipedetect(grid, function(swipedir) {
+  // swipedir contains either "none", "left", "right", "top", or "down"
+  if (swipedir == 'left') {
+    alert('left')
+  }
+})
+
 
 
 document.addEventListener("keyup", control);

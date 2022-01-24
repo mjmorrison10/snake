@@ -1,0 +1,65 @@
+:root {
+  --starSize: 50px;
+}
+
+.grid {
+  height: 900px;
+  width: 900px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0px 0px;
+  border-style: solid;
+}
+
+@media (max-height: 950px) {
+  .grid {
+    height: 800px;
+    width: 800px;
+  }
+}
+@media (max-height: 850px) {
+  .grid {
+    height: 700px;
+    width: 700px;
+  }
+}
+@media (max-height: 750px) {
+  .grid {
+    height: 600px;
+    width: 600px;
+  }
+}
+@media (max-height: 650px) {
+  .grid {
+    height: 500px;
+    width: 500px;
+  }
+}
+@media (max-height: 550px) {
+  .grid {
+    height: 400px;
+    width: 400px;
+  }
+}
+@media (max-height: 450px) {
+  .grid {
+    height: 350px;
+    width: 350px;
+  }
+}
+
+.grid div {
+  width: auto;
+  aspect-ratio: 1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.snake {
+  background-color: blue;
+}
+
+.apple {
+  background-color: purple;
+  border-radius: 50%;
+}

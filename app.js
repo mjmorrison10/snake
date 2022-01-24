@@ -143,20 +143,31 @@ function swipedetect(el, callback) {
     false
   );
 }
+/*
+function control(e) {
+  squares[currentIndex].classList.remove("snake");
+
+  if (e.keyCode === 39 || e.keyCode === 68) direction = 1; //right
+  else if (e.keyCode === 38 || e.keyCode === 87) direction = -width; //up
+  else if (e.keyCode === 37 || e.keyCode === 65) direction = -1; //left
+  else if (e.keyCode === 40 || e.keyCode === 83) direction = +width; //down
+  else if (e.keyCode === 82) startGame();
+}*/
 
 swipedetect(grid, function (swipedir) {
   // swipedir contains either "none", "left", "right", "top", or "down"
-  if (swipedir == "left") {
-    alert(swipedir);
-  } else if ((swipedir = "right")) {
-    alert(swipedir);
-    // alert("right");
-  } else if ((swipedir = "up")) {
-    alert(swipedir);
-    // alert("up");
-  } else if ((swipedir = "down")) {
-    alert(swipedir);
-    // alert("down");
+  if (swipedir === "right") {
+    direction = 1;
+    console.log(swipedir);
+  } else if (swipedir === "up") {
+    direction = -width;
+    console.log(swipedir);
+  } else if (swipedir === "left") {
+    direction = -1;
+    console.log(swipedir);
+  } else if (swipedir === "down") {
+    direction = +width;
+    console.log(swipedir);
   }
 });
 

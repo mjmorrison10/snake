@@ -2,6 +2,7 @@ const squares = document.querySelectorAll(".grid div");
 const scoreDisplay = document.querySelector(".score span");
 const startBtn = document.querySelector(".start");
 const grid = document.querySelector(".grid");
+const gridContainer = document.querySelector(".grid-container");
 
 const width = 10;
 let currentIndex = 0;
@@ -144,7 +145,7 @@ function swipedetect(el, callback) {
   );
 }
 
-swipedetect(grid, function (swipedir) {
+swipedetect(gridContainer, function (swipedir) {
   // swipedir contains either "none", "left", "right", "top", or "down"
   if (swipedir === "right") {
     direction = 1;

@@ -70,10 +70,10 @@ body {
 
 .score {
   font-size: 2rem;
+  padding-left: 1rem;
 }
 
 .start {
-  z-index: 10;
   min-width: 50%;
   width: auto;
   padding: 1rem 0;

@@ -2,7 +2,7 @@ const squares = document.querySelectorAll(".grid div");
 const scoreDisplay = document.querySelector(".score span");
 const startBtn = document.querySelector(".start");
 const grid = document.querySelector(".grid");
-const gridContainer = document.querySelector(".grid-container");
+const gridContainer = document.querySelector(".grid-play");
 
 const width = 10;
 let currentIndex = 0;
@@ -13,6 +13,8 @@ let score = 0;
 let speed = 0.9;
 let intervalTime = 0;
 let interval = 0;
+
+document.body.addEventListener('click', (e) => console.log(e.target))
 
 function startGame() {
   currentSnake.forEach((index) => squares[index].classList.remove("snake"));
